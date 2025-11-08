@@ -1,0 +1,965 @@
+/* ======== Impostazioni Globali e Variabili (Tema DARK Aurora/Glass) ======== */
+:root {
+    --color-primary: #14B8A6; /* Teal più vibrante per dark mode */
+    --color-primary-rgb: 20, 184, 166;
+    --color-secondary: #F472B6; /* Pink più vibrante per dark mode */
+    --color-secondary-rgb: 244, 114, 182;
+    
+    --color-error: #EF4444; /* Rosso per errore */
+    --color-error-rgb: 239, 68, 68;
+    
+    /* Sfondi Aurora (adattati per dark) */
+    --aurora-gradient-1: radial-gradient(at 15% 15%, hsla(174, 70%, 50%, 0.2) 0px, transparent 50%);
+    --aurora-gradient-2: radial-gradient(at 85% 25%, hsla(324, 70%, 60%, 0.18) 0px, transparent 50%);
+    --aurora-gradient-3: radial-gradient(at 25% 85%, hsla(220, 70%, 60%, 0.15) 0px, transparent 50%);
+    --aurora-gradient-4: radial-gradient(at 75% 80%, hsla(30, 70%, 60%, 0.1) 0px, transparent 50%);
+    
+    --color-bg-dark: #111827;  /* Sfondo principale (Blu notte scuro) */
+    --color-bg-light: #1F2937; /* Sfondo secondario (Blu/Grigio) */
+    
+    /* --- MODIFICATO: Stile Liquid Glass --- */
+    --glass-bg: rgba(31, 41, 55, 0.55); /* Base leggermente più trasparente */
+    --glass-border: 1px solid rgba(255, 255, 255, 0.18); /* Bordo più luminoso */
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);  
+    --glass-blur: 18px; /* Blur più accentuato */
+    
+    /* --- MODIFICATO: Sfondo per input liquid glass --- */
+    --glass-input-bg: rgba(31, 41, 55, 0.35); /* Più trasparente */
+    --glass-input-border: 1px solid rgba(255, 255, 255, 0.15); /* Bordo luminoso */
+    --glass-input-shadow-inner: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+
+
+    --color-text-primary: #F9FAFB; /* Bianco quasi puro */
+    --color-text-secondary: #9CA3AF; /* Grigio chiaro per testo secondario */
+    --color-text-dark: #1F2937; /* Testo scuro per elementi chiari (raro) */
+
+    --font-family: 'Lato', sans-serif;
+    --border-radius: 16px;  
+    --transition-fast: 0.2s ease-out;
+    --transition-medium: 0.4s ease-out;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--color-bg-dark); /* Colore base */
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--color-text-secondary);  
+    background-color: var(--color-bg-dark);
+    /* Animazione sfondo Aurora */
+    background-image: var(--aurora-gradient-1), var(--aurora-gradient-2), var(--aurora-gradient-3), var(--aurora-gradient-4);
+    background-size: 200% 200%;  
+    background-attachment: fixed;  
+    animation: aurora-flow 25s ease-in-out infinite alternate;
+    overflow-x: hidden;  
+}
+
+@keyframes aurora-flow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: var(--color-text-primary);  
+}
+
+h1 { font-size: 3.2rem; font-weight: 900; }
+h2 { font-size: 2.5rem; margin-bottom: 2.5rem; }
+h3 { font-size: 1.5rem; color: var(--color-text-primary); }
+p { margin-bottom: 1rem; }
+a { color: var(--color-secondary); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--color-primary); text-decoration: none; }  
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+section {
+    padding: 5rem 0;
+}
+
+/* ======== Animazioni di Scorrimento ======== */
+.fade-in-section {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+}
+.animate-on-visible {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.animate-on-visible.delay-1 { transition-delay: 0.15s; }
+.animate-on-visible.delay-2 { transition-delay: 0.3s; }
+.animate-on-visible.delay-3 { transition-delay: 0.45s; }  
+.fade-in-section.is-visible .animate-on-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ======== Header & Nav (Stile Glass Dark) ======== */
+header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border-bottom: var(--glass-border);
+    box-shadow: none;  
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    /* --- MODIFICATO: Padding verticale ridotto per compensare quello aggiunto a 'nav' --- */
+    padding: 0.3rem 0;  
+    transition: background var(--transition-medium);  
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;  
+}
+.logo {
+    color: var(--color-text-primary);
+    flex-shrink: 0;  
+    display: flex;  
+    align-items: center;  
+    gap: 0.5rem;  
+    z-index: 101;  
+}
+.logo svg {
+    width: 40px;  
+    height: 40px;  
+}
+.logo svg path:first-child { stroke: var(--color-primary); }
+.logo svg path:last-child { stroke: var(--color-secondary); }
+.logo-text {  
+    font-size: 1.4rem;  
+    font-weight: 900;  
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+}
+.logo:hover .logo-text {
+    color: var(--color-primary);  
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Spazio tra nav e pulsante accedi */
+}
+
+nav {
+    overflow-x: auto;  
+    overflow-y: hidden; /* Mantenuto per evitare barre di scorrimento verticali indesiderate */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;
+    /* --- NUOVO: Aggiunto padding verticale per dare spazio all'animazione --- */
+    /* Questo padding (sopra e sotto) impedisce ai pulsanti di essere "tagliati" */
+    /* quando si sollevano (translateY) al passaggio del mouse. */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+nav::-webkit-scrollbar { display: none; }
+nav ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: nowrap;  
+    white-space: nowrap;  
+}
+nav ul li { margin-left: 0.5rem; }
+
+/* --- MODIFICATO: Stile Vetro/Pill per link nav --- */
+nav ul li a {
+    color: var(--color-text-secondary);
+    font-weight: 700;
+    padding: 0.6rem 1.2rem; /* Più padding orizzontale */
+    font-size: 0.9rem;
+    border-radius: 50px; /* --- Stondato (Pill shape) --- */
+    transition: all 0.3s ease-out; /* Transizione più morbida */
+    border-bottom: none;
+    
+    /* --- Effetto Vetro Base --- */
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+nav ul li a:hover {
+    color: var(--color-text-primary);
+    background-color: rgba(255, 255, 255, 0.15); /* Sfondo chiaro al hover */
+    transform: translateY(-2px); /* Leggero sollevamento */
+    /* --- MODIFICATO: Alone più piccolo e contenuto --- */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 8px 2px rgba(var(--color-primary-rgb), 0.2);
+}
+nav ul li.nav-active a {
+    color: var(--color-text-primary);
+    background: rgba(var(--color-primary-rgb), 0.25); /* Sfondo colorato per attivo */
+    border-color: rgba(var(--color-primary-rgb), 0.5);
+    transform: translateY(-2px);
+    /* --- MODIFICATO: Alone attivo più piccolo e contenuto --- */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 0 10px 3px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.hamburger-menu {
+    display: none; /* Nascosto su Desktop */
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101; /* Sopra il menu mobile */
+}
+.hamburger-menu span {
+    width: 30px;
+    height: 3px;
+    background: var(--color-text-primary);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+/* Animazione Hamburger -> X */
+.hamburger-menu.is-active span:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.hamburger-menu.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger-menu.is-active span:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+
+
+/* ======== Footer (Dark) ======== */
+footer {
+    background: transparent;  
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: 3rem 0 2rem 0;  
+    margin-top: 5rem;
+    border-top: var(--glass-border);  
+}
+.footer-contact-info {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: var(--glass-border);  
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-contact-info h3 {
+    color: var(--color-text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+.footer-contact-info p {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+.footer-qr-code { margin-top: 1rem; }
+.footer-qr-code img {
+    border-radius: 8px;
+    border: 3px solid var(--color-bg-light); /* Bordo scuro */
+    background: white; /* Sfondo bianco per QR leggibile */
+    padding: 5px; /* Spazio interno */
+}
+
+
+/* ======== Homepage (index.html) ======== */
+#hero {
+    background: transparent;  
+    min-height: 75vh;  
+    display: flex;
+    align-items: center;
+    color: var(--color-text-primary);
+    padding: 5rem 0;
+    text-align: left;  
+    position: relative;  
+}
+/* Overlay sfumato scuro */
+#hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;  
+    background: linear-gradient(180deg, rgba(17, 24, 39, 0) 0%, var(--color-bg-dark) 90%);
+    z-index: -1;  
+}
+
+#hero .container { text-align: left; }
+#hero h1 {
+    color: var(--color-text-primary);
+    font-size: 3.8rem;
+    font-weight: 900;
+}
+#hero p {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 2.5rem;  
+    max-width: 600px;
+    margin-left: 0;  
+    margin-right: 0;
+}
+
+/* ==== Griglia Homepage (Glass Dark) ==== */
+.preview-section {
+    padding: 5rem 0;
+    text-align: left;  
+}
+.preview-section:nth-child(even) { /* Rimosso sfondo alternato */
+    background-color: transparent;
+    border: none;
+}
+.preview-section p {
+    max-width: none;  
+    margin-left: 0;
+    font-size: 1.1rem;
+}
+.preview-text h2 { text-align: left; }
+
+.home-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 4rem;  
+}
+.glass-card { /* Contenitore vetro scuro */
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border: var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 2.5rem;
+    box-shadow: var(--glass-shadow);
+}
+.preview-image img {
+    width: 100%;
+    border-radius: calc(var(--border-radius) - 8px);  
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Ombra più scura */
+    transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+}
+.preview-image img:hover {
+    transform: scale(1.03);  
+    box-shadow: 0 10px 25px rgba(var(--color-primary-rgb), 0.2);
+}
+/* ========================================= */
+
+/* ======== Contenuto Pagine Interne ======== */
+.main-page-content { animation: fadeIn 0.8s ease-out; }
+.page-header {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: var(--glass-border);  
+}
+.page-header h1 { font-size: 3rem; }
+
+/* ==== Hero Pagina "Chi Siamo" (Dark) ==== */
+#about-hero {
+    background: transparent;
+    min-height: auto;  
+    text-align: center;  
+    color: var(--color-text-primary);
+    padding: 4rem 0 2rem 0;  
+    border-bottom: var(--glass-border);  
+    margin-bottom: 4rem;
+}
+#about-hero .container { text-align: center; }
+#about-hero h1 {
+    color: var(--color-text-primary);
+    font-size: 3.5rem;
+}
+#about-hero p {
+    font-size: 1.2rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 1rem auto 0 auto;  
+}
+
+.image-banner { /* Vetro scuro per banner */
+    width: 100%;
+    height: 350px;  
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 4rem;  
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    background: var(--color-bg-light); /* Fallback se immagine non carica */
+}
+
+/* ======== Layout Comuni ======== */
+.dual-column { display: flex; gap: 3rem; align-items: flex-start; }
+.dual-column > div { flex: 1; }
+
+ul.styled-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; list-style: none; }
+ul.styled-list li::before { content: '✓'; color: var(--color-primary); font-weight: bold; position: absolute; left: 0; }
+
+/* Statistiche (chi-siamo) - Vetro Scuro */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.stat-item {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    padding: 1.8rem 1.5rem;  
+    border-radius: var(--border-radius);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    text-align: center;
+    border-bottom: 3px solid var(--color-primary);  
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.stat-item:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(var(--color-primary-rgb), 0.15); }
+.stat-number { font-size: 2.2rem; font-weight: 900; color: var(--color-text-primary); }
+.stat-label { font-size: 0.9rem; color: var(--color-text-secondary); }
+
+/* Lista Uffici (chi-siamo) */
+.office-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin-top: 1.5rem; }
+.office-list li {
+    background: var(--color-bg-light); /* Sfondo scuro leggermente diverso */
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+}
+
+
+/* ======== Pulsanti (Stile Gradiente) ======== */
+.cta-button {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-text-primary); /* --- MODIFICATO: Usata variabile definita (era --color-text-light) --- */
+    text-decoration: none;
+    padding: 0.9rem 2.2rem;  
+    border-radius: 50px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-medium);  
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3);  
+    transform-origin: center;
+    white-space: nowrap;  
+}
+.cta-button:hover {
+    transform: translateY(-3px) scale(1.05); /* Animazione più accentuata */
+    /* --- MODIFICATO: Alone/Glow aggiunto al box-shadow esistente, valori più piccoli --- */
+    box-shadow: 0 10px 30px rgba(var(--color-secondary-rgb), 0.4), 0 0 18px 4px rgba(var(--color-primary-rgb), 0.25);
+    text-decoration: none;
+    color: white;
+}
+.cta-button-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: white;
+    background: var(--color-primary);
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.cta-button-small:hover { background: var(--color-secondary); transform: scale(1.05); text-decoration: none; color: white; }
+.cta-button-small.disabled { background: #4B5563; cursor: not-allowed; transform: none; opacity: 0.7; }
+
+/* ======== Form (Stile Glass Dark) ======== */
+.form-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    
+    /* --- NUOVO: Restringe e centra il form --- */
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-container h3 { text-align: center; margin-top: 0; }
+
+form label { margin-top: 1rem; margin-bottom: 0.5rem; font-weight: 700; color: var(--color-text-secondary); font-size: 0.9rem; }
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],  
+form input[type="number"],
+form input[type="date"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.9rem 1.2rem;  
+    border: var(--glass-input-border); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border-radius: 8px;  
+    font-family: var(--font-family);
+    font-size: 1rem;
+    background-color: var(--glass-input-bg); /* --- MODIFICATO: Stile Liquid Glass --- */
+    color: var(--color-text-primary);
+    box-shadow: var(--glass-input-shadow-inner);  
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);  
+}
+
+/* Stile Icone per Input Testo & Password */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding-left: 2.8rem;
+    background-repeat: no-repeat;
+    background-position: left 1rem center;
+    background-size: 1rem;
+}
+
+/* Icone specifiche (SVG Data URI codificati per CSS) */
+form input[type="text"] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239CA3AF' viewBox='0 0 16 16'%3E%3Cpath d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z'/%3E%3C/svg%3E");
+}
+form input[type="password"] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239CA3AF' viewBox='0 0 16 16'%3E%3Cpath d='M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z'/%3E%3C/svg%3E");
+}
+form input[type="email"] {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239CA3AF' viewBox='0 0 16 16'%3E%3Cpath d='M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.558z'/%3E%3C/svg%3E");
+}
+
+
+form input::placeholder, form textarea::placeholder { color: var(--color-text-secondary); opacity: 0.6; } /* Più opaco */
+form textarea { min-height: 120px; }
+form input:focus, form select:focus, form textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);  
+    box-shadow: var(--glass-input-shadow-inner), 0 0 0 3px rgba(var(--color-primary-rgb), 0.3); /* Mantiene ombra interna */
+}
+
+/* Stile per input non validi (es. email errata) */
+form input:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--color-error);
+}
+form input:invalid:not(:placeholder-shown):focus {
+    border-color: var(--color-error);
+    box-shadow: var(--glass-input-shadow-inner), 0 0 0 3px rgba(var(--color-error-rgb), 0.3);
+}
+
+
+form select {
+    appearance: none;  
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E"); /* Icona chiara */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;  
+}
+.nation-select-wrapper { position: relative; display: flex; align-items: center; gap: 1rem; }
+.nation-select-wrapper select { flex-grow: 1; }
+.nation-flag-display { width: 32px; height: auto; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); opacity: 0; transition: opacity var(--transition-fast); }
+.nation-flag-display.visible { opacity: 1; }
+
+/* Lista Team (Stile Glass Dark) */
+.team-list-container { background: transparent; padding: 0; }
+.team-list { list-style: none; padding: 0; }
+.team-list li {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border: var(--glass-border);
+    transition: all var(--transition-fast);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;  
+    box-shadow: none;  
+    margin-bottom: 1rem;
+}
+.team-list li:hover { border-color: var(--color-primary); transform: translateX(5px); box-shadow: 0 4px 10px rgba(var(--color-primary-rgb), 0.1); }
+.team-list li span:first-child { color: var(--color-text-primary); font-weight: 700; }
+.team-list li span:nth-child(2) { font-size: 0.9rem; color: var(--color-text-secondary); }
+
+
+/* ======== Classifiche (Stile Glass Dark) ======== */
+.leaderboard-header {  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;  
+    gap: 1rem;
+    background: var(--glass-bg);  
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+.leaderboard-filters { text-align: left; margin-bottom: 0; }
+.leaderboard-filters span { margin-right: 0.5rem; font-weight: 700; color: var(--color-text-primary); }
+.filter-btn {
+    border: var(--glass-border);  
+    color: var(--color-text-secondary);
+    background: rgba(var(--color-bg-light-rgb), 0.5); /* Usa bg-light trasparente */
+    padding: 0.6rem 1.2rem;  
+    margin: 0 0.3rem;
+    border-radius: 8px;  
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    font-weight: 700;
+}
+.filter-btn:hover { background: var(--color-primary); color: white; border-color: var(--color-primary); transform: translateY(-2px); }
+.filter-btn.active { 
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%); 
+    color: white; 
+    border-color: transparent; 
+    /* --- MODIFICATO: Aggiunto alone/glow, valori più piccoli --- */
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.3), 0 0 12px 3px rgba(var(--color-primary-rgb), 0.2); 
+}
+.leaderboard-flag-display { width: 40px; height: auto; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); opacity: 0; transition: opacity var(--transition-fast); }
+.leaderboard-flag-display.visible { opacity: 1; }
+
+.leaderboard-table {
+    box-shadow: var(--glass-shadow);
+    border: var(--glass-border);
+    width: 100%;
+    border-collapse: separate;  
+    border-spacing: 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;  
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+}
+.leaderboard-table th, .leaderboard-table td { padding: 1.2rem 1rem; text-align: left; border-bottom: var(--glass-border); }  
+.leaderboard-table thead {
+    background-color: rgba(var(--color-bg-light-rgb), 0.7); /* Header tabella più scuro */
+    color: var(--color-text-primary);
+    border-bottom: 2px solid var(--color-primary);
+}
+.leaderboard-table tbody tr { border-bottom: none; transition: background-color var(--transition-fast); }
+.leaderboard-table tbody tr:last-child td { border-bottom: none; }
+.leaderboard-table tbody tr:nth-child(even),
+.leaderboard-table tbody tr:nth-child(odd) { background-color: transparent; }
+.leaderboard-table tbody tr:hover { background-color: rgba(var(--color-primary-rgb), 0.1); }
+.leaderboard-table td:first-child { font-weight: 900; color: var(--color-primary); text-align: center; }
+
+
+/* ======== Pagina Formazione AI (Layout Corretto) ======== */
+.step-section {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: var(--border-radius);
+    padding: 3rem;  
+    overflow: hidden;
+    margin-bottom: 3rem;  
+}
+.step-section:last-of-type { margin-bottom: 0; }
+.step-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; }
+.step-circle {
+    flex-shrink: 0;
+    width: 60px;  
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;  
+    font-weight: 900;
+    color: white;
+    box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
+}
+.step-title { font-size: 2.2rem; font-weight: 900; margin-bottom: 0; line-height: 1.2; color: var(--color-text-primary); }
+.step-content-wrapper { margin-top: 1rem; }
+.step-content p { font-size: 1.05rem; max-width: none; color: var(--color-text-secondary); }
+.step-content p strong { color: var(--color-text-primary); }
+
+.kpi-box {
+    background: rgba(var(--color-bg-dark-rgb), 0.5); /* Usa bg-dark trasparente */
+    border: var(--glass-border);  
+    border-radius: 10px;  
+    padding: 1.5rem;  
+}
+.kpi-box-wrapper { margin-top: 2rem; }
+.kpi-box h3 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-text-secondary); margin-bottom: 1rem; }
+.kpi-list { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; }
+.kpi-list li { padding-left: 0; margin-bottom: 0; font-size: 0.85rem; color: var(--color-text-primary); }
+.kpi-list li::before { content: '•'; color: var(--color-primary); margin-right: 0.5rem; }
+
+
+/* ======== Animazione "Pulse" per Chat Bubble ======== */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(var(--color-primary-rgb), 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0); }
+}
+
+/* ======== AI Chat Bubble ======== */
+.ai-chat-bubble {
+    position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px;
+    background: var(--color-primary); color: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1001;
+    transition: all var(--transition-fast); text-decoration: none;
+    border: none; cursor: pointer; animation: pulse 2s infinite;  
+}
+.ai-chat-bubble:hover { background: var(--color-secondary); transform: scale(1.1); animation: none; }
+.ai-chat-bubble svg { width: 28px; height: 28px; }
+.ai-chat-bubble.hidden { transform: scale(0); opacity: 0; animation: none; }
+
+
+/* ======== AI Chat Window (Stile Glass Dark) ======== */
+#ai-chat-window {
+    position: fixed; bottom: 2rem; right: 2rem; width: 370px; max-width: 90%;
+    height: 550px; max-height: 80vh; background: var(--glass-bg);  
+    backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    -webkit-backdrop-filter: blur(var(--glass-blur)); /* --- MODIFICATO: Stile Liquid Glass --- */
+    border: var(--glass-border); box-shadow: var(--glass-shadow);
+    border-radius: var(--border-radius); z-index: 1002; display: flex;
+    flex-direction: column; opacity: 0; transform: translateY(20px);
+    visibility: hidden; transition: all var(--transition-medium);  
+}
+#ai-chat-window.show { opacity: 1; transform: translateY(0); visibility: visible; }
+
+.chat-header {
+    background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: white; padding: 1rem; display: flex; justify-content: space-between;
+    align-items: center; border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius); border-bottom: var(--glass-border);  
+}
+.chat-header h3 { color: white; margin-bottom: 0; font-size: 1.1rem; }
+#close-chat-btn { background: none; border: none; color: white; font-size: 2rem; line-height: 1; cursor: pointer; padding: 0 0.5rem; opacity: 0.8; transition: opacity var(--transition-fast); }
+#close-chat-btn:hover { opacity: 1; }
+
+#chat-messages {
+    flex-grow: 1; padding: 1rem; overflow-y: auto; background-color: transparent;  
+    display: flex; flex-direction: column; gap: 0.75rem;
+}
+.chat-message { padding: 0.75rem 1rem; border-radius: 15px; line-height: 1.4; max-width: 80%; animation: fadeIn 0.3s ease-out; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.chat-message.ai {
+    background-color: var(--color-bg-light); /* Sfondo messaggio AI scuro */
+    color: var(--color-text-secondary);  
+    border: var(--glass-border);  
+    border-bottom-left-radius: 2px; align-self: flex-start;
+}
+.chat-message.user {
+    background-color: var(--color-primary); color: white; border: none;
+    border-bottom-right-radius: 2px; align-self: flex-end;
+}
+
+.chat-input-area { display: flex; border-top: var(--glass-border); padding: 0.75rem; background: transparent; }
+#chat-input {
+    flex-grow: 1; border: var(--glass-border);  
+    background: rgba(var(--color-bg-dark-rgb), 0.7); /* Sfondo input molto scuro */
+    color: white; border-radius: 8px; padding: 0.75rem 1rem; font-size: 1rem;
+    outline: none; margin-right: 0.5rem;
+}
+#chat-input:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2); }
+#chat-send-btn {
+    background: var(--color-primary); color: white; border: none; border-radius: 8px;  
+    width: 48px; height: 48px; cursor: pointer; display: flex; align-items: center;
+    justify-content: center; transition: background-color var(--transition-fast); flex-shrink: 0;
+}
+#chat-send-btn:hover { background: var(--color-secondary); }
+/* ======================================= */
+
+
+/* ================================================ */
+/* ======== Responsive Design (MODIFICATO) ======== */
+/* ================================================ */
+
+@media (max-width: 900px) {
+    .dual-column { flex-direction: column; }
+    .leaderboard-flag-display { display: none; }
+}
+
+@media (max-width: 768px) {
+    
+    .container {
+        padding: 0 1.5rem;
+    }
+    section {
+        padding: 3rem 0;
+    }
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    .hamburger-menu {
+        display: flex; /* Mostra il pulsante hamburger */
+    }
+
+    .nav-wrapper {
+        position: absolute;
+        top: 100%; /* Si posiziona sotto l'header */
+        left: 0;
+        width: 100%;
+        
+        /* --- MODIFICATO: Sfondo menu mobile più opaco per leggibilità --- */
+        background: rgba(31, 41, 55, 0.9); /* Era --glass-bg (troppo trasparente) */
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
+        border-bottom: var(--glass-border);
+        box-shadow: var(--glass-shadow);
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        /* Nasconde il menu da chiuso */
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        visibility: hidden;
+        
+        padding: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    .nav-wrapper.is-active {
+        /* Mostra il menu da aperto */
+        max-height: 80vh; /* Altezza massima */
+        opacity: 1;
+        visibility: visible;
+        padding: 1.5rem 0;
+    }
+
+    /* Stile link menu mobile */
+    .nav-wrapper nav {
+        width: 100%;
+        overflow: visible; /* Rimuove scroll orizzontale */
+    }
+    .nav-wrapper nav ul {
+        flex-direction: column; /* Link in colonna */
+        align-items: center;
+        width: 100%;
+        gap: 0.5rem;
+        white-space: normal;
+    }
+    .nav-wrapper nav ul li {
+        margin-left: 0;
+        width: 90%;
+        text-align: center;
+    }
+    .nav-wrapper nav ul li a {
+        padding: 0.8rem 1rem;
+        font-size: 1.1rem;
+        display: block; /* Occupa tutta la larghezza */
+        
+        /* --- Mantiene lo stile "vetro" anche su mobile --- */
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav-wrapper nav ul li a:hover {
+        transform: none; /* Rimuove animazione hover su mobile */
+        background-color: rgba(255, 255, 255, 0.15);
+        box-shadow: none;
+    }
+    .nav-wrapper nav ul li.nav-active a {
+        transform: none;
+        box-shadow: none;
+        background: rgba(var(--color-primary-rgb), 0.25);
+    }
+
+
+    /* Stile pulsante "Accedi" menu mobile */
+    .nav-wrapper .cta-button {
+        width: 90%;
+        text-align: center;
+        margin-left: 0;
+        margin-top: 1rem; /* Spazio sopra il pulsante */
+    }
+    .nav-wrapper .cta-button:hover {
+        transform: none; /* Rimuove animazione hover su mobile */
+    }
+
+
+    /* --- Sezioni Hero Mobile --- */
+    #hero {
+        padding: 3rem 0;
+        min-height: auto;
+    }
+    #hero, #about-hero { text-align: left; }
+    #hero .container, #about-hero .container { text-align: left; }
+    #hero h1, #about-hero h1 { font-size: 2.5rem; }
+    #about-hero {
+        padding: 3rem 0 2rem 0;
+        margin-bottom: 2rem;
+    }
+    .preview-section:nth-child(even) .home-preview-grid .preview-image { order: -1; }
+
+
+    /* --- Formazione AI mobile (Regole esistenti OK) --- */
+    .step-section { padding: 2rem 1.5rem; }
+    .step-header { flex-direction: column; align-items: flex-start; gap: 0.8rem; margin-bottom: 1.5rem; }
+    .step-circle { width: 50px; height: 50px; font-size: 1.8rem; }
+    .step-title { font-size: 1.8rem; padding-top: 0; }
+    .step-content-wrapper { padding-left: 0; }
+    .step-content p { font-size: 1rem; }
+    .kpi-list { flex-direction: column; gap: 0.5rem; }
+
+    
+    /* --- Classifica mobile (Regole esistenti OK + Fix Tabella) --- */
+    .leaderboard-header { flex-direction: column; align-items: flex-start; }
+    .leaderboard-filters { width: 100%; overflow-x: auto; white-space: nowrap; padding-bottom: 0.5rem; }
+
+    .leaderboard-table {
+        display: block; /* Permette lo scroll orizzontale */
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap; /* Impedisce alla tabella di andare a capo */
+    }
+    .leaderboard-table tbody {
+        min-width: 600px;  
+    }
+    
+
+    /* --- Chat mobile (Regole esistenti OK) --- */
+    .ai-chat-bubble { width: 50px; height: 50px; bottom: 1rem; right: 1rem; }
+    #ai-chat-window { bottom: 1rem; right: 1rem; width: calc(100% - 2rem); max-height: calc(100% - 2rem); }
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+    #hero h1, #about-hero h1 {
+        font-size: 2.2rem; /* Riduci ulteriormente i titoli principali */
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .step-section {
+        padding: 1.5rem;
+    }
+    .glass-card {
+        padding: 1.5rem;
+    }
+    /* --- NUOVO: Rende il form a larghezza piena su schermi piccoli --- */
+    .form-container {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+}

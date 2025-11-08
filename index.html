@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureWave - Innovazione AI e Cultura Aziendale</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 50C20 38.9543 28.9543 30 40 30C51.0457 30 60 38.9543 60 50C60 61.0457 51.0457 70 40 70" stroke="var(--color-primary)" stroke-width="10" stroke-linecap="round"/>
+                    <path d="M40 50C40 38.9543 48.9543 30 60 30C71.0457 30 80 38.9543 80 50C80 61.0457 71.0457 70 60 70" stroke="var(--color-secondary)" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+                </svg>
+                <span class="logo-text">FutureWave</span>
+            </a>
+
+            <button class="hamburger-menu" aria-label="Apri menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-wrapper">
+                <nav>
+                    <ul>
+                        <li class="nav-active"><a href="index.html">Home</a></li>
+                        <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                        <li><a href="formazione-ai.html">Formazione AI</a></li>
+                        <li><a href="classifica.html">Classifica</a></li> 
+                        <li><a href="gestisci-team.html">Gestisci Team</a></li> 
+                        <li><a href="portale-manager.html">Manager</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="login.html" class="cta-button" style="color: #FFFFFF; margin-left: 1.5rem;">Accedi</a>
+            </div>
+
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="fade-in-section is-visible">
+            <div class="container">
+                <h1 class="animate-on-visible">Plasmiamo il Futuro con l'Intelligenza Artificiale</h1>
+                <p class="animate-on-visible delay-1">Supportiamo i clienti nella trasformazione tecnologica con soluzioni digitali innovative e sostenibili.</p>
+                
+                <a href="chi-siamo.html" class="cta-button animate-on-visible delay-2" style="color: #FFFFFF;">Scopri la nostra visione</a>
+            </div>
+        </section>
+
+        <section class="preview-section fade-in-section">
+            <div class="container">
+                <div class="home-preview-grid">
+                    <div class="preview-text animate-on-visible glass-card"> 
+                        <h2>Cultura Collaborativa</h2>
+                        <p>Promuoviamo un ambiente di lavoro <strong>dinamico e multiculturale</strong>, dove la collaborazione e la crescita professionale sono al centro.</p>
+                        
+                        <a href="chi-siamo.html" class="cta-button" style="margin-top: 1.5rem; color: #FFFFFF;">Leggi di più</a>
+                    </div>
+                    <div class="preview-image animate-on-visible delay-1">
+                        <img src="images/team diversificato.png" alt="Team diversificato che collabora in ufficio moderno">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="preview-section fade-in-section">
+            <div class="container">
+                <div class="home-preview-grid reverse-grid">
+                    <div class="preview-image animate-on-visible">
+                        <img src="images/ai.png" alt="Intelligenza artificiale e apprendimento futuro">
+                    </div>
+                    <div class="preview-text animate-on-visible delay-1 glass-card"> 
+                        <h2>Abbraccia la Sfida dell'AI</h2>
+                        <p>Partecipa al nostro programma di formazione e alle challenge interne per integrare l'AI nel tuo lavoro quotidiano e <strong>crescere insieme a noi</strong>.</p>
+                        
+                        <a href="formazione-ai.html" class="cta-button" style="margin-top: 1.5rem; color: #FFFFFF;">Inizia il percorso</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FutureWave. Tutti i diritti riservati.</p>
+            <div class="footer-contact-info">
+                <h3>Contattaci</h3>
+                <p><strong>Sede legale:</strong> Via dell'Innovazione, 1, 20126 Milano, Italia</p>
+                <p><strong>Email:</strong> info@futurewave.com</p>
+                    <div class="footer-qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.futurewave.com&bgcolor=ffffff&color=111827&qzone=1" alt="QR Code per connettersi con FutureWave">
+                    </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="ai-chat-window">
+            <div class="chat-header">
+                <h3>Assistente AI Anonimo</h3>
+                <button id="close-chat-btn" title="Chiudi">&times;</button>
+            </div>
+        <div id="chat-messages">
+            <div class="chat-message ai">
+                Ciao! Sono l'assistente AI di FutureWave. Le tue domande sono anonime. Chiedimi pure del 'questionario', delle 'challenge' o della formazione dei 'team'.
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chat-input" placeholder="Scrivi la tua domanda...">
+            <button id="chat-send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+        </div>
+    </div>
+    
+    <button id="open-chat-btn" class="ai-chat-bubble" title="Fai una domanda anonima all'AI">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+    </button>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             // === 1. LOGICA ANIMAZIONI DI SCORRIMENTO ===
+            const sections = document.querySelectorAll('.fade-in-section');
+            
+             // Funzione per animare i figli
+            const animateChildren = (element) => {
+                const animatedChildren = element.querySelectorAll('.animate-on-visible');
+                animatedChildren.forEach(child => child.classList.add('is-visible'));
+            };
+
+             // Mostra subito la prima sezione e i suoi figli
+            if (sections.length > 0) {
+                sections[0].classList.add('is-visible');
+                animateChildren(sections[0]);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        animateChildren(entry.target); // Anima i figli quando la sezione entra
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { rootMargin: '0px 0px -100px 0px' });
+
+            sections.forEach((section, index) => {
+                 // Osserva solo le sezioni successive alla prima
+                if (index > 0) { 
+                    observer.observe(section);
+                } 
+            });
+
+             // === 2. LOGICA CHATBOT INTERATTIVO ===
+            const openChatBtn = document.getElementById('open-chat-btn');
+            const chatWindow = document.getElementById('ai-chat-window');
+            const closeChatBtn = document.getElementById('close-chat-btn');
+            const sendBtn = document.getElementById('chat-send-btn');
+            const chatInput = document.getElementById('chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+
+            const knowledgeBase = { 
+                "ciao": "Ciao! Come posso aiutarti oggi? Chiedimi pure delle challenge o del questionario.", "salve": "Salve! Sono a tua disposizione per domande sul programma AI. Le tue domande sono anonime.", "questionario": "Il questionario è il corso 'Elements of AI'. Serve a stabilire un livello di competenza base per tutti. Puoi trovare il link nella pagina 'Formazione AI'.", "formazione": "La formazione si basa sul corso 'Elements of AI'. Completarlo è il primo passo per partecipare alle Olimpiadi AI. È gratuito e online.", "test": "Sì, il corso 'Elements of AI' prevede dei piccoli test dopo ogni modulo. L'attestato si ottiene con il 50% di risposte corrette su almeno il 90% delle domande totali.", "challenge": "Le 'Olimpiadi AI' sono delle challenge interne. I dipendenti formeranno dei team per competere su progetti AI. L'obiettivo è stimolare la collaborazione tra colleghi junior e senior.", "olimpiadi": "Le 'Olimpiadi AI' sono delle challenge interne. I dipendenti formeranno dei team per competere su progetti AI. L'obiettivo è stimolare la collaborazione tra colleghi junior e senior.", "team": "I team saranno composti da 6 a 10 persone. Saranno eterogenei per reparto ed età. Il punteggio del questionario iniziale aiuterà a bilanciare le competenze.", "creare team": "Puoi creare un team o unirti a uno esistente nella pagina 'Gestisci Team'. Il creatore diventa Team Leader.", "anonimo": "Sì, tutte le domande che fai qui sono completamente anonime. Nessuno saprà chi ha scritto.", "privacy": "La tua privacy è garantita. Questa chat è anonima e serve solo a raccogliere dubbi comuni.", "scadenza": "Trovi tutte le scadenze importanti (consegna questionario, formazione team, ecc.) nelle comunicazioni ufficiali del reparto HR.", "manager": "I manager hanno una dashboard dedicata per creare le challenge e valutare i progetti dei team. Trovi il link nel menu.", "grazie": "Prego! Se hai altre domande, sono qui." };
+            
+            if (openChatBtn && chatWindow && closeChatBtn) {
+                openChatBtn.addEventListener('click', () => { chatWindow.classList.add('show'); openChatBtn.classList.add('hidden'); chatInput.focus(); });
+                closeChatBtn.addEventListener('click', () => { chatWindow.classList.remove('show'); openChatBtn.classList.remove('hidden'); });
+            }
+
+            function getAiResponse(userMessage) { 
+                const message = userMessage.toLowerCase(); let bestMatch = null;
+                for (const key in knowledgeBase) { if (message.includes(key)) { if (!bestMatch || key.length > bestMatch.length) { bestMatch = key; } } }
+                if (bestMatch) { return knowledgeBase[bestMatch]; }
+                return "Non ho capito bene la domanda. Prova a riformularla usando parole chiave come 'questionario', 'team', 'challenge' o 'anonimo'.";
+            }
+
+            if (sendBtn && chatInput && messagesContainer) {
+                const sendMessage = () => { 
+                    const userMessage = chatInput.value.trim(); if (userMessage === '') return; 
+                    addMessage(userMessage, 'user'); chatInput.value = ''; chatInput.disabled = true;
+                    setTimeout(() => { const aiResponse = getAiResponse(userMessage); addMessage(aiResponse, 'ai'); chatInput.disabled = false; chatInput.focus(); }, 1000 + Math.random() * 500);
+                   };
+                const addMessage = (text, sender) => { 
+                    const messageElement = document.createElement('div'); messageElement.classList.add('chat-message', sender); messageElement.textContent = text; messagesContainer.appendChild(messageElement); messagesContainer.scrollTop = messagesContainer.scrollHeight; 
+                };
+                sendBtn.addEventListener('click', sendMessage);
+                chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter' && !chatInput.disabled) sendMessage(); });
+            }
+            const hamburgerBtn = document.querySelector('.hamburger-menu');
+            const navWrapper = document.querySelector('.nav-wrapper');
+
+        if (hamburgerBtn && navWrapper) {
+            hamburgerBtn.addEventListener('click', () => {
+                hamburgerBtn.classList.toggle('is-active');
+                navWrapper.classList.toggle('is-active');
+                
+                // Aggiorna aria-expanded per accessibilità
+                const isActive = hamburgerBtn.classList.contains('is-active');
+                hamburgerBtn.setAttribute('aria-expanded', isActive);
+            });
+        }
+        });
+    </script>
+
+</body>
+</html>

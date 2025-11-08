@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione - FutureWave</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 50C20 38.9543 28.9543 30 40 30C51.0457 30 60 38.9543 60 50C60 61.0457 51.0457 70 40 70" stroke="var(--color-primary)" stroke-width="10" stroke-linecap="round"/>
+                <path d="M40 50C40 38.9543 48.9543 30 60 30C71.0457 30 80 38.9543 80 50C80 61.0457 71.0457 70 60 70" stroke="var(--color-secondary)" stroke-width="10" stroke-linecap="round" opacity="0.7"/>
+            </svg>
+            <span class="logo-text">FutureWave</span>
+        </a>
+
+        <button class="hamburger-menu" aria-label="Apri menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-wrapper">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="formazione-ai.html">Formazione AI</a></li>
+                    <li><a href="classifica.html">Classifica</a></li> 
+                    <li><a href="gestisci-team.html">Gestisci Team</a></li> 
+                    <li><a href="portale-manager.html">Manager</a></li> 
+                </ul>
+            </nav>
+            
+            <a href="login.html" class="cta-button" style="color: #FFFFFF; margin-left: 1.5rem;">Accedi</a>
+        </div>
+
+    </div>
+</header>
+
+<main class="main-page-content">
+        
+        <section id="register-hero" class="fade-in-section is-visible" style="text-align: center;">
+            <div class="container">
+                <h1 class="animate-on-visible">Registrati al Portale</h1>
+                <p class="section-subtitle animate-on-visible delay-1" style="margin-top: 1rem;">Crea il tuo account per partecipare alle Olimpiadi AI.</p>
+            </div>
+        </section>
+
+        <div class="container">
+            
+            <section class="fade-in-section">
+                <div class="form-container animate-on-visible">
+                    <h3>Crea il tuo Profilo</h3>
+                    <form action="#" method="post">
+                        
+                        <label for="nome">Nome:</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Mario">
+                        
+                        <label for="cognome">Cognome:</label>
+                        <input type="text" id="cognome" name="cognome" required placeholder="Rossi">
+                        
+                        <label for="email">Email Aziendale:</label>
+                        <input type="email" id="email" name="email" required placeholder="mario.rossi@futurewave.com">
+                        
+                        <label for="eta">Età:</label>
+                        <input type="number" id="eta" name="eta" min="18" required placeholder="30">
+                        
+                        <label for="reparto">Reparto:</label>
+                        <select id="reparto" name="reparto" required>
+                            <option value="" disabled selected>Seleziona il tuo reparto...</option>
+                            <option value="ricerca_sviluppo">Ricerca & Sviluppo</option>
+                            <option value="operations">Operations</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="vendite">Vendite</option>
+                            <option value="risorse_umane">Risorse Umane</option>
+                            <option value="it_digital">IT & Digital Transformation</option>
+                        </select>
+                        
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required placeholder="Crea una password sicura">
+                        
+                        <button type="submit" class="cta-button" style="color: #FFFFFF; margin-top: 1.5rem;">Registrati</button>
+
+                        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">
+                            Sei già registrato? 
+                            <a href="login.html" style="color: var(--color-primary, #007bff); text-decoration: none; font-weight: 700;">
+                                Accedi
+                            </a>
+                        </p>
+
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 FutureWave. Tutti i diritti riservati.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+           const sections = document.querySelectorAll('.fade-in-section');
+        
+           sections[0]?.classList.add('is-visible'); 
+           const animatedChildrenInit = sections[0]?.querySelectorAll('.animate-on-visible');
+           animatedChildrenInit?.forEach(child => child.classList.add('is-visible'));
+
+           const observer = new IntersectionObserver((entries) => {
+               entries.forEach(entry => {
+                   if (entry.isIntersecting) {
+                       entry.target.classList.add('is-visible');
+                        const animatedChildren = entry.target.querySelectorAll('.animate-on-visible');
+                        animatedChildren.forEach(child => child.classList.add('is-visible'));
+                       observer.unobserve(entry.target);
+                   }
+               });
+           }, {
+               rootMargin: '0px 0px -100px 0px'
+           });
+
+           sections.forEach(section => {
+               if (!section.classList.contains('is-visible')) { 
+                   observer.observe(section); 
+               } 
+           });
+           const hamburgerBtn = document.querySelector('.hamburger-menu');
+           const navWrapper = document.querySelector('.nav-wrapper');
+
+       if (hamburgerBtn && navWrapper) {
+           hamburgerBtn.addEventListener('click', () => {
+               hamburgerBtn.classList.toggle('is-active');
+               navWrapper.classList.toggle('is-active');
+               
+               // Aggiorna aria-expanded per accessibilità
+               const isActive = hamburgerBtn.classList.contains('is-active');
+               hamburgerBtn.setAttribute('aria-expanded', isActive);
+           });
+       }
+    });
+</script>
+
+</body>
+</html>
